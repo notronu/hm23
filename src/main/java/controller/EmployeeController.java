@@ -9,23 +9,28 @@ import service.EmployeeServiceImpl;
 @RestController
 @RequestMapping(path = "/department")
 public class EmployeeController {
-    private final EmployeeServiceImpl employeeService; /* приватное поле EmployeeServiceImpl employeeService */
+    private final EmployeeServiceImpl employeeService;
     public EmployeeController(EmployeeServiceImpl employeeService) {
         this.employeeService = employeeService;
     }
-    /* такая констукция НЕ позволяет создавать EmployeeController-объект без фактического разрешения EmployeeServiceImpl зависимости.*/
+
     @GetMapping(path = "/add")
     public String addEmployee(@RequestParam ("fullName") String fullName,
+
                               @RequestParam ("salary") Integer salary,
+
                               @RequestParam ("department") String department){
+
         return employeeService.addEmployee(fullName,  salary, department);
     }
     @GetMapping(path = "/remove")
     public String removeEmployee(@RequestParam ("fullName") String fullName){
+
         return employeeService.removeEmployee(fullName);
     }
     @GetMapping(path = "/find")
     public String findEmployee(@RequestParam ("fullName") String fullName){
+
         return employeeService.findEmployee(fullName);
     }
 }
