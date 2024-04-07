@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
 public class DepartmentIsBlankException extends RuntimeException {
+
     public DepartmentIsBlankException(String message) {
         super(message);
     }
